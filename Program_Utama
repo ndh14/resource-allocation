@@ -1,0 +1,33 @@
+tic;
+clc;
+clear all;
+close all;
+
+%baris= user; kolom=RB
+baris=80; %5 10 20 40 80
+kolom=80; %5 10 20 40 80
+
+%layer=semut
+layer=80;
+
+%parameter ACO
+beta=3;
+epsilon=0.1;
+alpha=1;
+
+%inisialisasi matriks total spektral per TTI
+TTIuser1(1:baris)=zeros;
+TTIuser2(1:baris)=zeros;
+TTIuser3(1:baris)=zeros;
+TTIuser4(1:baris)=zeros;
+TTIuser5(1:baris)=zeros;
+TTIuser6(1:baris)=zeros;
+
+alokasi=zeros(baris,kolom);
+alokasi_spektral=zeros(baris,kolom);
+TTIiterasi=100; %jumlah iterasi
+
+for tti=1:TTIiterasi
+%ACO inisialisasi
+[InitialHeuristic,spek_skema,BW,SINR,gamma,r_user)= heuristik(baris,kolom,tti);
+
